@@ -8,7 +8,9 @@
           <span class="date">{{ formatDate(article.createdAt) }}</span>
           <span class="views">{{ article.viewCount }} 次浏览</span>
         </div>
-        <div class="content" v-html="renderedContent"></div>
+        <div class="content">
+          <MdPreview :modelValue="article.content" :theme="'light'" />
+        </div>
       </article>
       <div v-else class="loading">加载中...</div>
     </div>
@@ -16,21 +18,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { MdPreview } from 'md-editor-v3'
+import 'md-editor-v3/lib/preview.css'
 import { getArticle } from '../../api/article'
 
 const route = useRoute()
 const article = ref(null)
-
-const renderedContent = computed(() => {
-  if (!article.value?.content) return ''
-  // 简单的Markdown渲染（生产环境建议使用markdown-it）
-  return article.value.content
-    .replace(/\n/g, '<br>')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-})
 
 const formatDate = (dateStr) => {
   if (!dateStr) return ''
@@ -79,9 +74,11 @@ h1 {
 }
 
 .content {
-  line-height: 1.8;
-  color: #303133;
-  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.content :deep(.md-editor-preview) {
+  background: transparent;
 }
 
 .loading {
