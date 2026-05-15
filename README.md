@@ -8,9 +8,9 @@
 - Vue 3 + Vite
 - Vue Router 4
 - Pinia 状态管理
-- Element Plus UI组件库
-- MdEditor Markdown编辑器
-- Axios HTTP客户端
+- Element Plus UI 组件库
+- MdEditor Markdown 编辑器
+- Axios HTTP 客户端
 
 ### 后端
 - Spring Boot 3.2
@@ -28,14 +28,40 @@
 website-myself/
 ├── frontend/          # 前端项目
 ├── backend/           # 后端项目
-├── docker/            # Docker配置
+├── docker/            # Docker 配置
 │   ├── nginx/
 │   └── mysql/
 ├── docker-compose.yml
+├── .gitignore
 └── README.md
 ```
 
 ## 快速开始
+
+### Docker 部署（推荐）
+
+```bash
+# 一键启动所有服务
+docker compose up -d
+
+# 查看运行状态
+docker compose ps
+
+# 查看日志
+docker compose logs -f
+
+# 停止服务
+docker compose down
+
+# 停止并清除数据（重新初始化数据库）
+docker compose down -v
+```
+
+启动后访问：
+- 博客首页: http://localhost
+- 后台管理: http://localhost/admin
+- API 文档: http://localhost:8080/swagger-ui.html
+- 默认管理员账号: `admin` / `admin123`
 
 ### 本地开发
 
@@ -62,32 +88,7 @@ npm run dev
 
 - 博客首页: http://localhost:3000
 - 后台管理: http://localhost:3000/admin
-- 默认管理员账号: admin / admin123
-
-### Docker部署
-
-```bash
-# 一键启动所有服务
-docker-compose up -d
-
-# 查看运行状态
-docker-compose ps
-
-# 查看日志
-docker-compose logs -f
-
-# 停止服务
-docker-compose down
-```
-
-启动后访问:
-- 博客首页: http://localhost
-- 后台管理: http://localhost/admin
-
-## API文档
-
-启动后端后访问 Swagger UI:
-http://localhost:8080/swagger-ui.html
+- 默认管理员账号: `admin` / `admin123`
 
 ## 功能特性
 
@@ -95,14 +96,14 @@ http://localhost:8080/swagger-ui.html
 - 首页：个人介绍、技术栈展示、精选项目
 - 项目页：项目列表展示
 - 文章页：文章列表、分类筛选
-- 文章详情：Markdown渲染
+- 文章详情：Markdown 渲染
 
 ### 后台管理（需认证）
 - 仪表盘：数据概览
 - 个人介绍管理
 - 技术栈管理（增删改查）
 - 项目管理（增删改查）
-- 文章管理（Markdown编辑器）
+- 文章管理（Markdown 编辑器）
 - 分类管理（增删改查）
 
 ## 数据库设计
@@ -121,27 +122,14 @@ http://localhost:8080/swagger-ui.html
 
 `backend/src/main/resources/application.yml`:
 - 数据库连接配置
-- JWT密钥配置
-- Swagger配置
+- JWT 密钥配置
+- Swagger 配置
 
 ### 前端配置
 
 `frontend/vite.config.js`:
 - 开发服务器端口
-- API代理配置
-
-## 开发指南
-
-### 添加新功能
-
-1. 后端：在 `entity` 添加实体类，在 `mapper` 添加数据访问层，在 `service` 添加业务逻辑，在 `controller` 添加API端点
-2. 前端：在 `api` 添加请求函数，在 `views` 添加页面组件，在 `router` 添加路由配置
-
-### 代码规范
-
-- 后端遵循 Spring Boot 开发规范
-- 前端遵循 Vue 3 Composition API 规范
-- 使用 ESLint + Prettier 进行代码格式化
+- API 代理配置
 
 ## 许可证
 

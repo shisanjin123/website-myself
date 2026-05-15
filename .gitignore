@@ -1,0 +1,44 @@
+# === Java / Maven ===
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# === Node / Vue ===
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Docker ===
+docker/mysql/data/
+
+# === Claude Code ===
+.agents/
+.claude/skills/
+.claude/settings.local.json
+
+# === Environment ===
+.env
+.env.*
+!.env.example
