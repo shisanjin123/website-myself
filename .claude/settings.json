@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sudo apt *)",
+      "Bash(sudo systemctl *)",
+      "Bash(sudo docker *)"
+    ],
+    "deny": [
+      "Bash(sudo rm -rf /*)",
+      "Bash(sudo chmod 777 *)",
+      "Read(/etc/shadow)",
+      "Write(/etc/sudoers)"
+    ],
+    "ask": [
+      "Bash(sudo *)"
+    ]
+  }
+}
